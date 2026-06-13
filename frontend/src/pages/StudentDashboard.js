@@ -357,7 +357,7 @@ function StudentDashboard() {
               <li><Link to="/session-history" className="dash-action-link">View Session History</Link></li> 
               <li><Link to="/manage-profile" className="dash-action-link">Manage Profile</Link></li>
               <li className="dash-divider"></li>
-              <li><Link to="/" className="dash-action-link" style={{background: 'transparent', borderStyle: 'dashed'}}>Go to Homepage (Dev)</Link></li> 
+              
             </ul>
           </div>
         </div>
