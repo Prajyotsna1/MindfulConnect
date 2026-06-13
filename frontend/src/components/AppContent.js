@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
-import { Routes, Route, useNavigate, Link } from 'react-router-dom';
+import { Routes, Route, useNavigate, Link, useLocation } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
+import ReactGA from 'react-ga4';
 
 // Import Pages
 import HomePage from '../pages/HomePage';
@@ -27,6 +28,12 @@ import ConcernPage from '../pages/ConcernPage';
 function AppContent() {
   const { isAuthenticated, user, loading } = useAuth();
   const navigate = useNavigate();
+  const location = useLocation();
+
+  // Track pageviews dynamically
+  useEffect(() => {
+    ReactGA.send({ hitType: 'pageview', page: location.pathname + location.search });
+  }, [location]);
 
   // Refined useEffect for Navigation Logic
   useEffect(() => {
