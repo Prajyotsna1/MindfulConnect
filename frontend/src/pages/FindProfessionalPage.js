@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
+import API_BASE_URL from '../apiBaseUrl';
 import ProfessionalCard from '../components/ProfessionalCard';
 
 const CSS = `
@@ -144,7 +145,7 @@ function FindProfessionalPage() {
     const fetchMainCounsellor = async () => {
       try {
         const token = localStorage.getItem('token');
-        const res = await axios.get('http://localhost:5000/api/counsellors/main', {
+        const res = await axios.get(`${API_BASE_URL}/api/counsellors/main`, {
           headers: { 'x-auth-token': token }
         });
 

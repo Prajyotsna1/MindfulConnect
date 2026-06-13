@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import axios from 'axios';
+import API_BASE_URL from '../apiBaseUrl';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { useAuth } from '../context/AuthContext';
@@ -332,7 +333,7 @@ function StudentProfilePage() {
             }
             try {
                 const token = localStorage.getItem('token');
-                const res = await axios.get(`http://localhost:5000/api/students/${studentId}`, {
+                const res = await axios.get(`${API_BASE_URL}/api/students/${studentId}`, {
                     headers: { 'x-auth-token': token }
                 });
                 setStudent(res.data);
@@ -350,7 +351,7 @@ function StudentProfilePage() {
             if (showBookingSection && counsellorUser && counsellorUser.userId) {
                 try {
                     const token = localStorage.getItem('token');
-                    const res = await axios.get(`http://localhost:5000/api/counsellors/${counsellorUser.userId}`, {
+                    const res = await axios.get(`${API_BASE_URL}/api/counsellors/${counsellorUser.userId}`, {
                         headers: { 'x-auth-token': token }
                     });
                     if (!res.data.availability) {
@@ -430,7 +431,7 @@ function StudentProfilePage() {
                 status: 'scheduled'
             };
             
-            const res = await axios.post('http://localhost:5000/api/appointments/book', bookingData, {
+            const res = await axios.post(`${API_BASE_URL}/api/appointments/book`, bookingData, {
                 headers: { 'x-auth-token': token }
             });
             

@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import API_BASE_URL from '../apiBaseUrl';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 
@@ -285,7 +286,7 @@ function BookingPage() {
         const fetchCounselorData = async () => {
             try {
                 const token = localStorage.getItem('token');
-                const res = await axios.get(`http://localhost:5000/api/counsellors/${counselorId}`, {
+                const res = await axios.get(`${API_BASE_URL}/api/counsellors/${counselorId}`, {
                     headers: { 'x-auth-token': token }
                 });
 
@@ -355,7 +356,7 @@ function BookingPage() {
                 date: formatDate(selectedDate),
                 time: selectedTimeSlot,
             };
-            const res = await axios.post('http://localhost:5000/api/appointments/student-book', bookingData, {
+            const res = await axios.post(`${API_BASE_URL}/api/appointments/student-book`, bookingData, {
                 headers: { 'x-auth-token': token }
             });
             alert(res.data.msg);

@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import axios from 'axios';
+import API_BASE_URL from '../apiBaseUrl';
 
 const CSS = `
   @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap');
@@ -258,7 +259,7 @@ function ManageProfilePage() {
       if (user) {
         try {
           const token = localStorage.getItem('token');
-          const res = await axios.get('http://localhost:5000/api/auth/profile', {
+          const res = await axios.get(`${API_BASE_URL}/api/auth/profile`, {
             headers: { 'x-auth-token': token }
           });
           
@@ -315,7 +316,7 @@ function ManageProfilePage() {
             contact: profileData.contact,
             roleSpecific: profileData.roleSpecific
         };
-        await axios.put('http://localhost:5000/api/auth/profile', dataToSave, {
+        await axios.put(`${API_BASE_URL}/api/auth/profile`, dataToSave, {
             headers: { 'x-auth-token': token }
         });
         alert("Profile updated successfully!");

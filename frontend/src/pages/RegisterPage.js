@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import axios from 'axios';
+import API_BASE_URL from '../apiBaseUrl';
 import mountainBg from '../images/health1.jpg';
 
 function RegisterPage() {
@@ -77,8 +78,7 @@ if (role === 'counsellor') {
 
   try {
     const res = await axios.post(
-      // 'http://10.0.1.21:5000/api/auth/register',
-      'http://localhost:5000/api/auth/register',
+      `${API_BASE_URL}/api/auth/register`,
       dataToSend
     );
 

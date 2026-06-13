@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import axios from 'axios';
+import API_BASE_URL from '../apiBaseUrl';
 
 const CSS = `
   @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap');
@@ -307,7 +308,7 @@ function PrivacyConsentPage() {
           consent: true
         };
 
-        const res = await axios.post('http://localhost:5000/api/users/consent', consentData, {
+        const res = await axios.post(`${API_BASE_URL}/api/users/consent`, consentData, {
           headers: {
             'x-auth-token': token
           }
