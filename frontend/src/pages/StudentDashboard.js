@@ -111,7 +111,7 @@ const CSS = `
 
   .dash-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 30px;
     opacity: 0;
     animation: fadeUp 0.7s cubic-bezier(.22,1,.36,1) 0.35s forwards;

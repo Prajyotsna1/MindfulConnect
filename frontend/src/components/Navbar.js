@@ -6,12 +6,11 @@ function Navbar() {
   const { isAuthenticated, logout, user } = useAuth(); // Destructure 'user' to get role
 
   return (
-    <nav style={styles.navbar}>
-      <div style={styles.logo}>
+    <nav style={styles.navbar} className="navbar-container">
+      <div style={styles.logo} className="logo-container">
         <Link to="/" style={styles.logoLink}>MindfulConnect</Link>
-
       </div>
-      <ul style={styles.navList}>
+      <ul style={styles.navList} className="nav-list-container">
         {isAuthenticated ? (
           <>
             {/* Conditional Dashboard link based on user role */}
@@ -40,6 +39,26 @@ function Navbar() {
           </>
         )}
       </ul>
+      <style>
+        {`
+          @media (max-width: 768px) {
+            .navbar-container {
+              flex-direction: column !important;
+              padding: 15px 20px !important;
+              gap: 15px !important;
+              text-align: center !important;
+            }
+            .nav-list-container {
+              gap: 15px !important;
+              flex-wrap: wrap !important;
+              justify-content: center !important;
+            }
+            .logo-container {
+              font-size: 1.8em !important;
+            }
+          }
+        `}
+      </style>
     </nav>
   );
 }
@@ -49,7 +68,7 @@ const styles = {
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
-    padding: '20px 60px',
+    padding: '20px 5%',
     backgroundColor: 'var(--color-background-white)',
     boxShadow: '0 4px 20px var(--color-shadow-subtle)',
     position: 'sticky',
