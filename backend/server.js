@@ -42,9 +42,11 @@ app.use((err, req, res, next) => {
 
 
 // Test route
-app.get('/', (req, res) => {
-  res.send('API is running...');
-});
+if (process.env.NODE_ENV !== 'production') {
+  app.get('/', (req, res) => {
+    res.send('API is running...');
+  });
+}
 
 // --- API ROUTES ---
 const authRoutes = require('./routes/auth');
